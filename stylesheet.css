@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.table-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 50px; 
+}
+
+h2 {
+    text-align: center;
+    margin: 10px 0; 
+}
+
+.table-section {
+    width: 380px; /* Adjusted to be 5% smaller */
+}
+
+table {
+    border-collapse: collapse;
+    width: 95%; /* Adjusted to maintain alignment */
+    table-layout: fixed; 
+}
+
+th, td {
+    border: 1px solid #ccc; 
+    padding: 8px; 
+    text-align: center; 
+    word-wrap: break-word; 
+}
+
+th {
+    background-color: #f2f2f2; 
+}
+
+.navigation-table {
+    display: flex; /* Enable flexbox */
+    flex-wrap: wrap; /* Allow wrapping to the next line if necessary */
+    justify-content: space-around; /* Distribute space between items */
+    margin-top: 20px; /* Add some spacing above the navigation table */
+}
+
+.folder {
+    flex: 1 1 150px; /* Allow the folders to grow/shrink and set a base width */
+    background-color: #f8f8f8;
+    padding: 5px; /* Reduced padding */
+    margin: 5px; /* Margin around each folder */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* Center the text */
+    font-size: 14px; /* Reduced font size */
+    height: 30px; /* Optional: fixed height */
+    display: flex; /* Use flexbox for vertical alignment */
+    align-items: center; /* Center the text vertically */
+    justify-content: center; /* Center the text horizontally */
+}
+
+.folder:hover {
+    background-color: #eaeaea;
+}
+
+.folder-content {
+    max-height: 0; /* Start with no height */
+    overflow: hidden; /* Hide the overflow */
+    transition: max-height 0.3s ease-out; /* Smooth transition */
+    margin-top: 10px; /* Space between folder and content */
+    padding: 0 5px; /* Add padding */
+    border: 1px dashed #ccc;
+    width: 100%; /* Ensure full width */
+}
+
+.folder-content a {
+    display: block;
+    margin: 5px 0;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab:hover {
+    background-color: #eaeaea;
+}
+
+.tab.active {
+    background-color: #eaeaea;
+    border-bottom: none;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.folder-content a {
+    display: block;
+    margin: 5px 0;
+}
+
