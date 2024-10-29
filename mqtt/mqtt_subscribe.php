@@ -21,7 +21,7 @@ if ($mqtt->connect()) {
             $humidity = $data['Humidity'] ?? null;
 
             // Insert data into MySQL database
-            $conn = new mysqli("localhost", "username", "password", "testdb");
+            $conn = new mysqli("192.168.11.4", "username", "password", "testdb");
 
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);

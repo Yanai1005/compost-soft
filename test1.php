@@ -153,7 +153,7 @@
                 </tr>
                 <!-- <?php
                 // Database connection settings
-                $servername = "172.17.22.66"; // Change as needed
+                $servername = "192.168.11.4"; // Change as needed
                 $username = "root"; // Change as needed
                 $password = ""; // Change as needed
                 $dbname = "testdb"; // Change as needed
