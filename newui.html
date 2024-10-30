@@ -6,6 +6,69 @@
     <title>GBL2425 System</title>
     <link rel="stylesheet" href="stylesheet.css">
     <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            transition: margin-left 0.3s;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            transition: 0.3s;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            left: -250px; /* Hide sidebar by default */
+        }
+
+        .sidebar.active {
+            left: 0; /* Show sidebar when active */
+        }
+
+        .sidebar h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .sidebar button {
+            background: none;
+            color: white;
+            border: none;
+            text-align: left;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .sidebar button:hover {
+            background-color: #495057;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 250px; /* Adjust for sidebar width */
+            padding: 20px;
+            flex-grow: 1;
+            transition: margin-left 0.3s;
+        }
+
+        /* Tabs */
+        .tabs {
+            margin-top: 20px;
+        }
+
         /* Button styles */
         .control-button {
             padding: 10px 15px;
@@ -16,104 +79,183 @@
             font-size: 16px;
             margin: 5px;
         }
+
         .auto-button {
             background-color: #28a745; /* Green */
         }
+
         .manual-button {
             background-color: #dc3545; /* Red */
         }
+
         .control-button:hover {
             opacity: 0.8; /* Slightly dim on hover */
+        }
+
+        /* Toggle button styles */
+        .toggle-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Measuring Temperature and Humidity</h1>
+    <button class="toggle-button" onclick="toggleSidebar()">☰</button>
 
-    <div class="tabs">
-        <div class="tab active" onclick="openTab(event, 'folder1')">Measure</div>
-        <div class="tab" onclick="openTab(event, 'folder2')">Weather Conditions</div>
-        <div class="tab" onclick="openTab(event, 'folder3')">Sensor Readings</div>
-        <div class="tab" onclick="openTab(event, 'folder4')">Testing</div>
+    <div class="sidebar" id="sidebar">
+        <h2>Menu</h2>
+        <button onclick="openTab(event, 'folder1')">Measure</button>
+        <button onclick="openTab(event, 'folder2')">Weather Conditions</button>
+        <button onclick="openTab(event, 'folder3')">Sensor Readings</button>
+        <button onclick="openTab(event, 'folder4')">Testing</button>
     </div>
 
-    <div id="folder1" class="tab-content active">
-        <div class="table-container">
-            <div class="table-section">
-                <h2>Temperature (°C)</h2>
-                <table>
-                    <tr>
-                        <th>Bin</th>
-                        <th>Current</th>
-                        <th>Max</th>
-                        <th>Min</th>
-                        <th>Average</th>
-                    </tr>
-                    <!-- Temperature data here -->
-                </table>
-            </div>
+    <div class="main-content">
+        <h1>CONTROL SYSTEM</h1>
 
-            <div class="table-section">
-                <h2>Humidity (%)</h2>
-                <table>
-                    <tr>
-                        <th>Bin</th>
-                        <th>Current</th>
-                        <th>Max</th>
-                        <th>Min</th>
-                        <th>Average</th>
-                    </tr>
-                    <!-- Humidity data here -->
-                </table>
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'folder1')">Measure</div>
+            <div class="tab" onclick="openTab(event, 'folder2')">Weather Conditions</div>
+            <div class="tab" onclick="openTab(event, 'folder3')">Sensor Readings</div>
+            <div class="tab" onclick="openTab(event, 'folder4')">Testing</div>
+        </div>
+
+        <div id="folder1" class="tab-content active">
+            <div class="table-container">
+                <div class="table-section">
+                    <h2>Temperature (°C)</h2>
+                    <table>
+                        <tr>
+                            <th>Bin</th>
+                            <th>Current</th>
+                            <th>Max</th>
+                            <th>Min</th>
+                            <th>Average</th>
+                        </tr>
+                        <!-- Temperature data here -->
+                    </table>
+                </div>
+
+                <div class="table-section">
+                    <h2>Humidity (%)</h2>
+                    <table>
+                        <tr>
+                            <th>Bin</th>
+                            <th>Current</th>
+                            <th>Max</th>
+                            <th>Min</th>
+                            <th>Average</th>
+                        </tr>
+                        <!-- Humidity data here -->
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="folder2" class="tab-content">
-        <h2>Weather Conditions</h2>
-        <!-- Folder 2 content -->
-        <table>
-            <tr>
-                <th>Robot ID</th>
-                <th>Name</th>
-                <th>Min(°C)</th>
-                <th>Max(°C)</th>
-                <th>Min(%)</th>
-                <th>Max(%)</th>
-            </tr>
-         </table>
-    </div>
+        <div id="folder2" class="tab-content">
+            <h2>Weather Conditions</h2>
+            <!-- Folder 2 content -->
+            <table>
+                <tr>
+                    <th>Robot ID</th>
+                    <th>Name</th>
+                    <th>Min(°C)</th>
+                    <th>Max(°C)</th>
+                    <th>Min(%)</th>
+                    <th>Max(%)</th>
+                </tr>
+            </table>
+        </div>
 
-    <div id="folder3" class="tab-content">
-        <h2>Sensor Readings</h2>
-        <!-- Folder 3 content -->
-        <table>
-            <tr>
-                <th>Robot ID</th>
-                <th>Timestamp</th>
-                <th>Temperature(°C)</th>
-                <th>Humidity(%)</th>
-                <th>Control Mode</th>
-                <th>Duty Cycle</th>
-            </tr>
-            <tr>
-                <td>001</td>
-                <td>2024-10-30 12:00</td>
-                <td>25</td>
-                <td>60</td>
-                <td>
-                    <button class="control-button auto-button" onclick="setControlMode('auto')">Auto</button>
-                    <button class="control-button manual-button" onclick="setControlMode('manual')">Manual</button>
-                </td>
-                <td>50%</td>
-            </tr>
-            <!-- Add more rows as needed -->
-        </table>
-    </div>
+        <div id="folder3" class="tab-content">
+            <h2>Sensor Readings</h2>
+            <!-- Folder 3 content -->
+            <table>
+                <tr>
+                    <th>Robot ID</th>
+                    <th>Timestamp</th>
+                    <th>Temperature(°C)</th>
+                    <th>Humidity(%)</th>
+                    <th>Control Mode</th>
+                    <th>Duty Cycle</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2024-10-30 12:00</td>
+                    <td>25</td>
+                    <td>60</td>
+                    <td>
+                        <button class="control-button auto-button" onclick="setControlMode('auto')">Auto</button>
+                        <button class="control-button manual-button" onclick="setControlMode('manual')">Manual</button>
+                    </td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2024-10-30 12:00</td>
+                    <td>25</td>
+                    <td>60</td>
+                    <td>
+                        <button class="control-button auto-button" onclick="setControlMode('auto')">Auto</button>
+                        <button class="control-button manual-button" onclick="setControlMode('manual')">Manual</button>
+                    </td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2024-10-30 12:00</td>
+                    <td>25</td>
+                    <td>60</td>
+                    <td>
+                        <button class="control-button auto-button" onclick="setControlMode('auto')">Auto</button>
+                        <button class="control-button manual-button" onclick="setControlMode('manual')">Manual</button>
+                    </td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>2024-10-30 12:00</td>
+                    <td>25</td>
+                    <td>60</td>
+                    <td>
+                        <button class="control-button auto-button" onclick="setControlMode('auto')">Auto</button>
+                        <button class="control-button manual-button" onclick="setControlMode('manual')">Manual</button>
+                    </td>
+                    <td>50%</td>
+                </tr>
+            </table>
+        </div>
 
-    <div id="folder4" class="tab-content">
-        <h2>Other Settings</h2>
-        <!-- Folder 4 content -->
+        <div id="folder4" class="tab-content">
+            <h2>Other Settings</h2>
+            <!-- Folder 4 content -->
+        </div>
     </div>
 
     <script>
@@ -134,6 +276,17 @@
             document.getElementById(folderId).style.display = "block";
             document.getElementById(folderId).classList.add("active");
             event.currentTarget.classList.add("active");
+        }
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+            var mainContent = document.querySelector(".main-content");
+            if (sidebar.classList.contains("active")) {
+                mainContent.style.marginLeft = "250px"; // Adjust for sidebar width
+            } else {
+                mainContent.style.marginLeft = "0"; // Reset margin
+            }
         }
 
         function setControlMode(mode) {
