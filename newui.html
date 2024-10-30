@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBL2425 System</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <style>
+        /* Button styles */
+        .control-button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .auto-button {
+            background-color: #28a745; /* Green */
+        }
+        .manual-button {
+            background-color: #dc3545; /* Red */
+        }
+        .control-button:hover {
+            opacity: 0.8; /* Slightly dim on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Measuring Temperature and Humidity</h1>
+
+    <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'folder1')">Measure</div>
+        <div class="tab" onclick="openTab(event, 'folder2')">Weather Conditions</div>
+        <div class="tab" onclick="openTab(event, 'folder3')">Sensor Readings</div>
+        <div class="tab" onclick="openTab(event, 'folder4')">Testing</div>
+    </div>
+
+    <div id="folder1" class="tab-content active">
+        <div class="table-container">
+            <div class="table-section">
+                <h2>Temperature (°C)</h2>
+                <table>
+                    <tr>
+                        <th>Bin</th>
+                        <th>Current</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                        <th>Average</th>
+                    </tr>
+                    <!-- Temperature data here -->
+                </table>
+            </div>
+
+            <div class="table-section">
+                <h2>Humidity (%)</h2>
+                <table>
+                    <tr>
+                        <th>Bin</th>
+                        <th>Current</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                        <th>Average</th>
+                    </tr>
+                    <!-- Humidity data here -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="folder2" class="tab-content">
+        <h2>Weather Conditions</h2>
+        <!-- Folder 2 content -->
+        <table>
+            <tr>
+                <th>Robot ID</th>
+                <th>Name</th>
+                <th>Min(°C)</th>
+                <th>Max(°C)</th>
+                <th>Min(%)</th>
+                <th>Max(%)</th>
+            </tr>
+         </table>
+    </div>
+
+    <div id="folder3" class="tab-content">
+        <h2>Sensor Readings</h2>
+        <!-- Folder 3 content -->
+        <table>
+            <tr>
+                <th>Robot ID</th>
+                <th>Timestamp</th>
+                <th>Temperature(°C)</th>
+                <th>Humidity(%)</th>
+                <th>Control Mode</th>
+                <th>Duty Cycle</th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>2024-10-30 12:00</td>
+                <td>25</td>
+                <td>60</td>
+                <td>
+                    <button class="control-button auto-button" onclick="setControlMode('auto')">Auto</button>
+                    <button class="control-button manual-button" onclick="setControlMode('manual')">Manual</button>
+                </td>
+                <td>50%</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+    </div>
+
+    <div id="folder4" class="tab-content">
+        <h2>Other Settings</h2>
+        <!-- Folder 4 content -->
+    </div>
+
+    <script>
+        function openTab(event, folderId) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(folderId).style.display = "block";
+            document.getElementById(folderId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+
+        function setControlMode(mode) {
+            alert("Control mode set to: " + mode);
+            // Additional logic to handle control mode can be added here
+        }
+    </script>
+</body>
+</html>
