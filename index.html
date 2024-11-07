@@ -1,0 +1,483 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBL2425 System</title>
+    <style>
+       
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .main-header {
+        text-align: center;
+        font-size: 2.5em;
+        color: #4CAF50;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    .folder {
+        width: 80%;
+        margin: 0 auto;
+        border: 2px solid #4CAF50;
+        border-radius: 5px;
+        overflow: hidden;
+        background-color: #f9f9f9;
+        position: relative;
+    }
+    .tabs {
+        display: flex;
+        position: relative;
+        top: -2px;
+    }
+    .tab {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: 2px solid #4CAF50;
+        border-bottom: none;
+        cursor: pointer;
+        text-align: center;
+        position: relative;
+        top: 2px;
+        border-radius: 5px 5px 0 0;
+        margin-right: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .tab:hover, .tab.active {
+        background-color: #45a049;
+    }
+
+    .tab.active {
+        z-index: 1;
+        border-bottom: 2px solid #f9f9f9;
+    }
+
+    .tab-content {
+        padding: 20px;
+        display: none;
+    }
+
+    .tab-content p {
+        margin: 0;
+    }
+
+    /* Center and bold the text for "Measuring Temperature and Humidity" */
+    p {
+        text-align: center;
+        font-weight: bold;
+    }
+    
+
+    /* Flex container to hold two tables side by side */
+    .table-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        border: 1px solid #4CAF50;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Show first tab content by default */
+    .tab-content:first-child {
+        display: block;
+    }
+</style>
+
+    </style>
+</head>
+<body>
+
+<h1 class="main-header">GBL2425 System</h1>
+
+<div class="folder">
+    <div class="tabs">
+        <button class="tab active" onclick="openTab(event, 'Tab1')">Measure</button>
+        <button class="tab" onclick="openTab(event, 'Tab2')">Weather Conditions</button>
+        <button class="tab" onclick="openTab(event, 'Tab3')">Sensor Readings</button>
+        <button class="tab" onclick="openTab(event, 'Tab4')">Conditions</button>
+    </div>
+    <div class="tab-content" id="Tab1">
+        <p>Measuring Temperature and Humidity</p>
+        
+        <div class="table-container">
+            <!-- Data will be taken from MySQL-->
+            <table>
+                <tr>
+                    <th>Compost</th>
+                    <th>Current Temperature</th>
+                    <th>Max Temp Value</th>
+                    <th>Min Temp Value</th>
+                    <th>Average Temp Value</th>
+                </tr>
+                <tr>
+                    <td>compost 1</td>
+                    <td>Row 1, Cell 2</td>
+                    <td>Row 1, Cell 3</td>
+                    <td>Row 1, Cell 4</td>
+                    <td>Row 1, Cell 5</td>
+                </tr>
+                <tr>
+                    <td>compost 2</td>
+                    <td>Row 2, Cell 2</td>
+                    <td>Row 2, Cell 3</td>
+                    <td>Row 2, Cell 4</td>
+                    <td>Row 2, Cell 5</td>
+                </tr>
+                <tr>
+                    <td>compost 3</td>
+                    <td>Row 3, Cell 2</td>
+                    <td>Row 3, Cell 3</td>
+                    <td>Row 3, Cell 4</td>
+                    <td>Row 3, Cell 5</td>   
+                </tr>
+                <tr>
+                    <td>compost 4</td>
+                    <td>Row 4, Cell 2</td>
+                    <td>Row 4, Cell 3</td>
+                    <td>Row 4, Cell 4</td>
+                    <td>Row 4, Cell 5</td>
+                </tr>
+                <tr>
+                    <td>compost 5</td>
+                    <td>Row 5, Cell 2</td>
+                    <td>Row 5, Cell 3</td>
+                    <td>Row 5, Cell 4</td>
+                    <td>Row 5, Cell 5</td>
+                </tr>
+                <tr>
+                    <td>compost 6</td>
+                    <td>Row 6, Cell 2</td>
+                    <td>Row 6, Cell 3</td>
+                    <td>Row 6, Cell 4</td>
+                    <td>Row 6, Cell 5</td>
+                </tr>
+            </table>
+
+            
+            <table>
+                <tr>
+                    
+                    <th>Current Humidity</th>
+                    <th>Max Humidity</th>
+                    <th>Min Humidity</th>
+                    <th>Average Humidity</th>
+                </tr>
+                <tr>
+                    
+                    <td>Row 1, Cell 2</td>
+                    <td>Row 1, Cell 3</td>
+                    <td>Row 1, Cell 4</td>
+                    <td>Row 1, Cell 5</td>
+                </tr>
+                <tr>
+                    
+                    <td>Row 2, Cell 2</td>
+                    <td>Row 2, Cell 3</td>
+                    <td>Row 2, Cell 4</td>
+                    <td>Row 2, Cell 5</td>
+                </tr>
+                <tr>
+                    
+                    <td>Row 3, Cell 2</td>
+                    <td>Row 3, Cell 3</td>
+                    <td>Row 3, Cell 4</td>
+                    <td>Row 3, Cell 5</td>
+                </tr>
+                <tr>
+                    
+                    <td>Row 4, Cell 2</td>
+                    <td>Row 4, Cell 3</td>
+                    <td>Row 4, Cell 4</td>
+                    <td>Row 4, Cell 5</td>
+                </tr>
+                <tr>
+                    
+                    <td>Row 5, Cell 2</td>
+                    <td>Row 5, Cell 3</td>
+                    <td>Row 5, Cell 4</td>
+                    <td>Row 5, Cell 5</td>
+                </tr>
+                <tr>
+                   
+                    <td>Row 6, Cell 2</td>
+                    <td>Row 6, Cell 3</td>
+                    <td>Row 6, Cell 4</td>
+                    <td>Row 6, Cell 5</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="tab-content" id="Tab2" style="display:none">
+        <p>Weather Condition</p>
+        <!-- Data will be taken from MySQL-->
+         <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Min Temp</th>
+                <th>Max Temp</th>
+                <th>Min Hum</th>
+                <th>Max Hum</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Cold</td>
+                <td>8.9</td>
+                <td>13.7</td>
+                <td> 76.7</td>
+                <td>86.3</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Cold</td>
+                <td>8.9</td>
+                <td>13.7</td>
+                <td> 76.7</td>
+                <td>86.3</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Cold</td>
+                <td>8.9</td>
+                <td>13.7</td>
+                <td> 76.7</td>
+                <td>86.3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Cold</td>
+                <td>8.9</td>
+                <td>13.7</td>
+                <td> 76.7</td>
+                <td>86.3</td>
+            </tr>
+         </table>
+
+
+    </div>
+    <div class="tab-content" id="Tab3" style="display:none">
+        <p>Sensor Readings</p>
+        <!-- Data will be taken from MySQL-->
+        <table id="sensorTable">
+            <tr>
+                <th>Robot ID</th>
+                <th>Timestamp</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Control Mode</th>
+                <th>Motor Duty Cycle</th>
+            </tr>
+        </table>
+    </div>
+    
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://192.168.11.4:3306/getSensorData", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                const sensorData = JSON.parse(xhr.responseText);
+                const table = document.getElementById("sensorTable");
+
+                // Clear existing rows (except the header)
+                table.innerHTML = `
+                    <tr>
+                        <th>Robot ID</th>
+                        <th>Timestamp</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Control Mode</th>
+                        <th>Motor Duty Cycle</th>
+                    </tr>
+                `;
+
+                // Insert new rows
+                sensorData.forEach(function(row) {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td>${row.robotId}</td>
+                        <td>${row.timestamp}</td>
+                        <td>${row.temperature}</td>
+                        <td>${row.humidity}</td>
+                        <td>${row.controlMode}</td>
+                        <td>${row.motorDutyCycle}</td>
+                    `;
+                    table.appendChild(tr);
+                });
+            }
+        };
+        xhr.send();
+
+    </script>
+    
+
+
+    <div class="tab-content" id="Tab4" style="display:none">
+        <p>Conditions</p>
+        <!-- Data will be taken from MySQL-->
+        <table>
+            <tr>
+                <th>Robot ID</th>
+                <th>Set Min Temperature</th>
+                <th>Set Max Temperature</th>
+                <th>Set Min Humididty</th>
+                <th>Set Max Humididty</th>
+                <th>Control Mode</th>
+                <th>Time operation Conditions</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><input type="number" placeholder="15" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="30" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="40" min="0" max="100">%</td>
+                <td><input type="number" placeholder="70" min="0" max="100">%</td>
+                <td>
+                    <div class="control-buttons">
+                        <button onclick="alert('Set button clicked')">Set</button>
+                        <button onclick="alert('Set Time button clicked')">Set Time</button>
+                    </div>
+                </td>
+                <td>
+                    every <input type="number" placeholder="10" min="1"> min(s)<br>
+                    will move for <input type="number" placeholder="5" min="1"> min(s)
+                </td>
+                <td>08:00</td>
+                <td>18:00</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><input type="number" placeholder="15" min="0" max="100">°C</td>
+            <td><input type="number" placeholder="30" min="0" max="100">°C</td>
+            <td><input type="number" placeholder="40" min="0" max="100">%</td>
+            <td><input type="number" placeholder="70" min="0" max="100">%</td>
+                <td>
+                    <div class="control-buttons">
+                        <button onclick="alert('Set button clicked')">Set</button>
+                        <button onclick="alert('Set Time button clicked')">Set Time</button>
+                    </div>
+                </td>
+                <td>
+                    every <input type="number" placeholder="10" min="1"> min(s)<br>
+                    will move for <input type="number" placeholder="5" min="1"> min(s)
+                </td>
+                <td>08:00</td>
+                <td>18:00</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><input type="number" placeholder="15" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="30" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="40" min="0" max="100">%</td>
+                <td><input type="number" placeholder="70" min="0" max="100">%</td>
+                <td>
+                    <div class="control-buttons">
+                        <button onclick="alert('Set button clicked')">Set</button>
+                        <button onclick="alert('Set Time button clicked')">Set Time</button>
+                    </div>
+                </td>
+                <td>
+                    every <input type="number" placeholder="10" min="1"> min(s)<br>
+                    will move for <input type="number" placeholder="5" min="1"> min(s)
+                </td>
+                <td>08:00</td>
+                <td>18:00</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><input type="number" placeholder="15" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="30" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="40" min="0" max="100">%</td>
+                <td><input type="number" placeholder="70" min="0" max="100">%</td>
+                <td>
+                    <div class="control-buttons">
+                        <button onclick="alert('Set button clicked')">Set</button>
+                        <button onclick="alert('Set Time button clicked')">Set Time</button>
+                    </div>
+                </td>
+                <td>
+                    every <input type="number" placeholder="10" min="1"> min(s)<br>
+                    will move for <input type="number" placeholder="5" min="1"> min(s)
+                </td>
+                <td>08:00</td>
+                <td>18:00</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><input type="number" placeholder="15" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="30" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="40" min="0" max="100">%</td>
+                <td><input type="number" placeholder="70" min="0" max="100">%</td>
+                <td>
+                    <div class="control-buttons">
+                        <button onclick="alert('Set button clicked')">Set</button>
+                        <button onclick="alert('Set Time button clicked')">Set Time</button>
+                    </div>
+                </td>
+                <td>
+                    every <input type="number" placeholder="10" min="1"> min(s)<br>
+                    will move for <input type="number" placeholder="5" min="1"> min(s)
+                </td>
+                <td>08:00</td>
+                <td>18:00</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><input type="number" placeholder="15" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="30" min="0" max="100">°C</td>
+                <td><input type="number" placeholder="40" min="0" max="100">%</td>
+                <td><input type="number" placeholder="70" min="0" max="100">%</td>
+                <td>
+                    <div class="control-buttons">
+                        <button onclick="alert('Set button clicked')">Set</button>
+                        <button onclick="alert('Set Time button clicked')">Set Time</button>
+                    </div>
+                </td>
+                <td>
+                    every <input type="number" placeholder="10" min="1"> min(s)<br>
+                    will move for <input type="number" placeholder="5" min="1"> min(s)
+                </td>
+                <td>08:00</td>
+                <td>18:00</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<script>
+function openTab(event, tabId) {
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => content.style.display = 'none');
+
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    document.getElementById(tabId).style.display = 'block';
+    event.currentTarget.classList.add('active');
+}
+</script>
+
+</body>
+</html>
