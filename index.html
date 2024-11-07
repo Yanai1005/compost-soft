@@ -293,7 +293,7 @@
     
     <script>
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://192.168.11.4:3306/getSensorData", true);
+        xhr.open("GET", "http://localhost:3000/getSensorData", true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 const sensorData = JSON.parse(xhr.responseText);

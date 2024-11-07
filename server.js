@@ -6,7 +6,7 @@ const app = express();
 
 // Enable CORS for specific IP address (127.0.0.1)
 const corsOptions = {
-    origin: ['http://192.168.11.6', 'http://127.0.0.1'],  // Allow requests from this address
+    origin: ['http://192.168.11.4', 'http://127.0.0.1'],  // Allow requests from this address
   methods: 'GET',
 };
 app.use(cors(corsOptions)); // Apply CORS middleware globally
@@ -17,6 +17,7 @@ const db = mysql.createConnection({
   user: 'root',          
   password: 'GPBL2425',   
   database: 'testdb',
+  port: 3306
 });
 
 // Connect to MySQL database
@@ -27,7 +28,7 @@ db.connect((err) => {
 
 // Define a route to get sensor data
 app.get('/getSensorData', (req, res) => {
-  const query = 'SELECT * FROM testdb.sensorreading'; 
+  const query = 'SELECT * FROM sensorreading'; 
   console.log(query);
   
   db.query(query, (err, result) => {
@@ -44,7 +45,7 @@ app.get('/getSensorData', (req, res) => {
 });
 
 // Start the server on port 3000
-const port = 3306;
+const port = 3000;
 app.listen(port, () => {
-  console.log(`Server running on http://192.168.11.4:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
