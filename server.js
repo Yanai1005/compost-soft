@@ -4,14 +4,14 @@ const cors = require('cors');
 
 const app = express();
 
-// Enable CORS for specific IP address (127.0.0.1)
+// Enable CORS for specific IP address (127.0.0.1) / 特定の IP アドレス (127.0.0.1) に対して CORS を有効にする
 const corsOptions = {
-    origin: ['http://192.168.11.4', 'http://127.0.0.1'],  // Allow requests from this address
+    origin: ['http://192.168.11.4', 'http://127.0.0.1'],  // Allow requests from this address / このアドレスからのリクエストを許可する
   methods: 'GET',
 };
-app.use(cors(corsOptions)); // Apply CORS middleware globally
+app.use(cors(corsOptions)); // Apply CORS middleware globally /CORS ミドルウェアをグローバルに適用する
   
-// Create a connection to MySQL
+// Create a connection to MySQL/IP アドレスへの MySQL への接続を作成する
 const db = mysql.createConnection({
   host: '192.168.11.4',     
   user: 'root',          
@@ -20,13 +20,13 @@ const db = mysql.createConnection({
   port: 3306
 });
 
-// Connect to MySQL database
+// Connect to MySQL database / MySQLデータベースに接続する
 db.connect((err) => {
   if (err) throw err;
   console.log('Connected to MySQL database');
 });
 
-// Define a route to get sensor data
+// Define a route to get sensor data / センサーデータを取得するルートを定義する
 app.get('/getSensorData', (req, res) => {
   const query = 'SELECT * FROM sensorreading'; 
   console.log(query);
@@ -40,11 +40,11 @@ app.get('/getSensorData', (req, res) => {
 
 
     console.log('Database result:', result);
-    res.json(result);  // Send data back as JSON
+    res.json(result);  // Send data back as JSON / データを JSON として送り返す
   });
 });
 
-// Start the server on port 3000
+// Start the server on port 3000 / ポート 3000 でサーバーを起動します
 const port = 3000;
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
